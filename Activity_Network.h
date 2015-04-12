@@ -1,6 +1,6 @@
 //Activity_Network.h
 
-#define MAX_VERTICES 8
+#define MAX_VERTICES 9
 
 typedef struct node *nodePointer;
 
@@ -18,4 +18,5 @@ typedef struct {
 
 hdnodes graph[MAX_VERTICES];
 
-void topSort(hdnodes graph[], int n);
+void topSort(hdnodes graph[], int n, int earliest[], int order[]);
+void latestTime(int latest[], int n, int order[]);
