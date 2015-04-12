@@ -65,8 +65,28 @@ void printCritical(hdnodes graph[], int n, int earliest[], int latest[]){
 			j = ptr->vertex;
 			e = earliest[i];
 			l = latest[j] - ptr->dur;
-			printf("a%-3d\t\t%-4d\t%-4d\t%-4d\t%s", count, e, l, l - e, !(l - e) ? "YES": "NO");
+			printf("a%-3d\t\t%-4d\t%-4d\t%-4d\t%s\n", count, e, l, l - e, !(l - e) ? "YES": "NO");
 		}
 	}
 }
 
+void insertNode(hdnodes graph[], int k, int l, int dur){
+	nodePointer ptr, newNode;
+	if(graph[k].link == NULL){
+		graph[k].link = malloc(sizeof(node));
+		graph[k].link->vertex = l;
+		graph[k].link->dur = dur;
+		graph[k].link->link = NULL;
+	}else{
+		for(ptr = graph[k].link; ptr; ptr = ptr->link){
+			if(!(ptr->link)){
+				newNode = malloc(sizeof(node));
+				newNode->vertex = l;
+				newNode->dur = dur;
+				newNode->link = NULL;
+				ptr->link = newNode;
+				break;
+			}
+		}
+	}
+}
