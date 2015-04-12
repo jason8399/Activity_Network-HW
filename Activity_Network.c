@@ -41,6 +41,32 @@ void topSort(hdnodes graph[], int n, int earliest[], int order[]){
 	}
 }
 
-void latestTime(int latest[], int n, int order[]){
-
+void latestTime(hdnodes graph[], int n, int latest[], int order[], int earliest[]){
+	int count = n - 1, i, j, k;
+	nodePointer ptr;
+	latest[count] = earliest[count];
+	for(i = count - 1;i >= 0; i--){
+		j = order[i];
+		for(ptr = graph[j].link; ptr; ptr = ptr->link){
+			k = ptr->vertex;
+			if(latest[j] > latest[k] - ptr->dur){
+				latest[j] = latest[k] - ptr->dur;
+			}
+		}
+	}
 }
+
+void printCritical(hdnodes graph[], int n, int earliest[], int latest[]){
+	int i, j, e, l, count = 0;
+	nodePointer ptr;
+	printf("activity\te\t\tl\t\tl-e\t\tcritical\n");
+	for(i = 0; i < n; i++){
+		for(ptr = graph[i].link; ptr; ptr = ptr->link){
+			j = ptr->vertex;
+			e = earliest[i];
+			l = latest[j] - ptr->dur;
+			printf("a%-3d\t\t%-4d\t%-4d\t%-4d\t%s", count, e, l, l - e, !(l - e) ? "YES": "NO");
+		}
+	}
+}
+

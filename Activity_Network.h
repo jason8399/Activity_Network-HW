@@ -19,4 +19,6 @@ typedef struct {
 hdnodes graph[MAX_VERTICES];
 
 void topSort(hdnodes graph[], int n, int earliest[], int order[]);
-void latestTime(int latest[], int n, int order[]);
+void latestTime(hdnodes graph[], int n, int latest[], int order[], int earliest[]);
+void printCritical(hdnodes graph[], int n, int earliest[], int latest[]);
+
