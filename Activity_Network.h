@@ -3,14 +3,19 @@
 #define MAX_VERTICES 8
 
 typedef struct node *nodePointer;
-typedef struct node {
+
+struct node {
 	int vertex;
 	int dur;
 	nodePointer link;
 };
+typedef struct node node;
+
 typedef struct {
 	int count;
 	nodePointer link;
 } hdnodes;
 
 hdnodes graph[MAX_VERTICES];
+
+void topSort(hdnodes graph[], int n);
