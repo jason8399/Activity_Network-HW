@@ -16,9 +16,10 @@ int main(int argc, const char *argv[])
 		insertNode(graph, k, l, dur);
 	}
 	topSort(graph, nodeNum, earliest, order);
+	checkUnreachable(earliest, nodeNum);
 	latestTime(graph, nodeNum, latest, order, earliest);
 	printCritical(graph, nodeNum, earliest, latest);
 	traversalCritical(graph, nodeNum - 1, 0, path, 0, earliest, latest);
-
+	printf("Critical Long: %d\n", earliest[nodeNum - 1]);
 	return 0;
 }

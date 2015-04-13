@@ -1,6 +1,6 @@
 //Activity_Network.h
 
-#define MAX_VERTICES 9
+#define MAX_VERTICES 20
 #define MAX_PATH 20
 
 typedef struct node *nodePointer;
@@ -23,3 +23,4 @@ void latestTime(hdnodes graph[], int n, int latest[], int order[], int earliest[
 void printCritical(hdnodes graph[], int n, int earliest[], int latest[]);
 void insertNode(hdnodes graph[], int k, int l, int dur);
 void traversalCritical(hdnodes graph[], int end, int now, int path[], int pathLong,int earliest[], int latest[]);
+void checkUnreachable(int earliest[], int n);

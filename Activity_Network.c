@@ -59,7 +59,7 @@ void latestTime(hdnodes graph[], int n, int latest[], int order[], int earliest[
 void printCritical(hdnodes graph[], int n, int earliest[], int latest[]){
 	int i, j, e, l, count = 0;
 	nodePointer ptr;
-	printf("activity\te\t\tl\t\tl-e\t\tcritical\n");
+	printf("activity\te\tl\tl-e\tcritical\n");
 	for(i = 0; i < n; i++){
 		for(ptr = graph[i].link; ptr; ptr = ptr->link){
 			j = ptr->vertex;
@@ -110,6 +110,16 @@ void traversalCritical(hdnodes graph[], int end, int now, int path[], int pathLo
 			if(!(l - e)){
 				traversalCritical(graph, end, j, path, pathLong + 1, earliest, latest);
 			}
+		}
+	}
+}
+
+void checkUnreachable(int earliest[], int n){
+	int i;
+	for(i = 1; i < n; i++){
+		if(!earliest[i]){
+			fprintf(stderr, "\nNetwork has Unreacheable. Terminated.\n");
+			exit(EXIT_FAILURE);
 		}
 	}
 }
