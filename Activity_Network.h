@@ -16,7 +16,6 @@ typedef struct {
 	nodePointer link;
 } hdnodes;
 
-hdnodes graph[MAX_VERTICES];
 
 void topSort(hdnodes graph[], int n, int earliest[], int order[]);
 void latestTime(hdnodes graph[], int n, int latest[], int order[], int earliest[]);

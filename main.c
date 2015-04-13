@@ -7,18 +7,18 @@
 
 int main(int argc, const char *argv[])
 {
-	int i, k, l, dur;
-	int earliest[MAX_VERTICES], latest[MAX_VERTICES], order[MAX_VERTICES];
-	nodePointer ptr;
-	memset(latest, 999, sizeof(latest));
-	while(1){
+	int i, k, l, dur, nodeNum, edgeNum;
+	int earliest[MAX_VERTICES] = {0}, latest[MAX_VERTICES] = {0}, order[MAX_VERTICES] = {0};
+	hdnodes graph[MAX_VERTICES] = {0};
+
+	scanf("%d %d", &nodeNum, &edgeNum);
+	for(i = 0; i < edgeNum; i++){
 		scanf("%d %d %d", &k, &l, &dur);
-		if(!k && !l && !dur) break;
 		insertNode(graph, k, l, dur);
 	}
-	topSort(graph, MAX_VERTICES, earliest, order);
-	latestTime(graph, MAX_VERTICES, latest, order, earliest);
-	printCritical(graph, MAX_VERTICES, earliest, latest);
+	topSort(graph, nodeNum, earliest, order);
+	latestTime(graph, nodeNum, latest, order, earliest);
+	printCritical(graph, nodeNum, earliest, latest);
 
 	return 0;
 }

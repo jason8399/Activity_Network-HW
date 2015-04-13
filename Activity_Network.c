@@ -49,7 +49,7 @@ void latestTime(hdnodes graph[], int n, int latest[], int order[], int earliest[
 		j = order[i];
 		for(ptr = graph[j].link; ptr; ptr = ptr->link){
 			k = ptr->vertex;
-			if(latest[j] > latest[k] - ptr->dur){
+			if(!latest[j] || latest[j] > latest[k] - ptr->dur){
 				latest[j] = latest[k] - ptr->dur;
 			}
 		}
@@ -65,7 +65,7 @@ void printCritical(hdnodes graph[], int n, int earliest[], int latest[]){
 			j = ptr->vertex;
 			e = earliest[i];
 			l = latest[j] - ptr->dur;
-			printf("a%-3d\t\t%-4d\t%-4d\t%-4d\t%s\n", count, e, l, l - e, !(l - e) ? "YES": "NO");
+			printf("a%-3d\t\t%-4d\t%-4d\t%-4d\t%s\n", count++, e, l, l - e, !(l - e) ? "YES": "NO");
 		}
 	}
 }
@@ -89,4 +89,5 @@ void insertNode(hdnodes graph[], int k, int l, int dur){
 			}
 		}
 	}
+	graph[l].count++;
 }
