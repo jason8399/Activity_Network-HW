@@ -2,13 +2,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "Activity_Network.h"
 
 int main(int argc, const char *argv[])
 {
 	int i, k, l, dur, nodeNum, edgeNum;
-	int earliest[MAX_VERTICES] = {0}, latest[MAX_VERTICES] = {0}, order[MAX_VERTICES] = {0};
+	int earliest[MAX_VERTICES] = {0}, latest[MAX_VERTICES] = {0}, order[MAX_VERTICES] = {0}, path[MAX_PATH] = {0};
 	hdnodes graph[MAX_VERTICES] = {0};
 
 	scanf("%d %d", &nodeNum, &edgeNum);
@@ -19,6 +18,7 @@ int main(int argc, const char *argv[])
 	topSort(graph, nodeNum, earliest, order);
 	latestTime(graph, nodeNum, latest, order, earliest);
 	printCritical(graph, nodeNum, earliest, latest);
+	traversalCritical(graph, nodeNum - 1, 0, path, 0, earliest, latest);
 
 	return 0;
 }

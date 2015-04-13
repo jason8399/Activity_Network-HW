@@ -91,3 +91,25 @@ void insertNode(hdnodes graph[], int k, int l, int dur){
 	}
 	graph[l].count++;
 }
+
+void traversalCritical(hdnodes graph[], int end, int now, int path[], int pathLong,int earliest[], int latest[]){
+	int i, j, e, l;
+	nodePointer ptr;
+	if(now == end){
+		for(i = 0; i < pathLong; i++)
+			printf("%d ", path[i]);
+		printf("%d\n", now);
+		return;
+	}
+	else{
+		path[pathLong] = now;
+		for(ptr = graph[now].link; ptr; ptr = ptr->link){
+			j = ptr->vertex;
+			e = earliest[now];
+			l = latest[j] - ptr->dur;
+			if(!(l - e)){
+				traversalCritical(graph, end, j, path, pathLong + 1, earliest, latest);
+			}
+		}
+	}
+}
