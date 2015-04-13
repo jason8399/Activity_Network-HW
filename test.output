@@ -1,0 +1,15 @@
+activity	e	l	l-e	critical
+a0  		0   	0   	0   	YES
+a1  		0   	2   	2   	NO
+a2  		0   	3   	3   	NO
+a3  		6   	6   	0   	YES
+a4  		4   	6   	2   	NO
+a5  		5   	8   	3   	NO
+a6  		7   	7   	0   	YES
+a7  		7   	7   	0   	YES
+a8  		7   	10  	3   	NO
+a9  		16  	16  	0   	YES
+a10 		14  	14  	0   	YES
+0 1 4 6 8
+0 1 4 7 8
+Critical Long: 18
